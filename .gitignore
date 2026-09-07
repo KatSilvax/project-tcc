@@ -1,0 +1,28 @@
+# Python e Ambientes
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+
+# Chaves e Segredos (NUNCA subir para o GitHub)
+.env
+.env.local
+.envrc
+
+# IDE e OS
+.vscode/
+.idea/
+.DS_Store
+
+# Dados e Modelos Locais (Agora vivem no AWS S3)
+data/
+models/
+modelo_nuvem_cache.joblib
+dados_nuvem_cache.csv
+*.joblib
+
+# Logs e Cache
+*.log
+.ipynb_checkpoints/
+uv.lock

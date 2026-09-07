@@ -1,0 +1,40 @@
+{
+    "tables": {
+        "table": {
+            "columns": {
+                "curso": {
+                    "sdtype": "categorical"
+                },
+                "periodo": {
+                    "sdtype": "categorical"
+                },
+                "idade": {
+                    "sdtype": "categorical"
+                },
+                "cidade": {
+                    "sdtype": "categorical"
+                },
+                "renda_total": {
+                    "sdtype": "categorical"
+                },
+                "trabalha_atualmente": {
+                    "sdtype": "categorical"
+                },
+                "recebe_auxilio_da_insti": {
+                    "sdtype": "categorical"
+                },
+                "ja_pensou_em_desistir": {
+                    "sdtype": "categorical"
+                },
+                "motivo_de_desistencia": {
+                    "sdtype": "categorical"
+                },
+                "motivo_agrupado": {
+                    "sdtype": "categorical"
+                }
+            }
+        }
+    },
+    "relationships": [],
+    "METADATA_SPEC_VERSION": "V1"
+}
