@@ -11,6 +11,46 @@ pelo dashboard para que o joblib.load() encontre a classe.
 """
 
 import pandas as pd
+from sklearn.compose import ColumnTransformer
+from sklearn.ensemble import GradientBoostingClassifier
+from sklearn.impute import SimpleImputer
+from sklearn.model_selection import GridSearchCV, StratifiedKFold
+from sklearn.pipeline import Pipeline
+from sklearn.preprocessing import OneHotEncoder
+
+
+class GBGridSearchWrapper:
+    """Wrapper importável usado pelo modelo GradientBoosting salvo com joblib."""
+
+    def __init__(self):
+        categorical_columns = [
+            'curso',
+            'idade',
+            'cidade',
+            'renda_total',
+            'trabalha_atualmente',
+            'recebe_auxilio_da_insti',
+        ]
+        numeric_columns = ['periodo']
+        self.pipeline = Pipeline([
+            ('preprocessor', ColumnTransformer([
+                (
+                    'cat',
+                    OneHotEncoder(handle_unknown='ignore', sparse_output=False),
+                    categorical_columns,
+                ),
+                ('num', SimpleImputer(strategy='median'), numeric_columns),
+            ])),
+            ('classifier', GradientBoostingClassifier(random_state=42)),
+        ])
+        self.pipeline.named_steps['classifier'].min_samples_leaf = 5
+        self.best_estimator_ = None
+
+    def predict(self, X):
+        return self.best_estimator_.predict(X)
+
+    def predict_proba(self, X):
+        return self.best_estimator_.predict_proba(X)
 
 
 class DashboardCompatibleModel:
