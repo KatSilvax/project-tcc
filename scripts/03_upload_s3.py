@@ -5,7 +5,11 @@ from botocore.exceptions import ClientError
 # Configuração de Caminhos
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATA_PATH = os.path.join(BASE_DIR, 'data', 'dados_sinteticos_ifms.csv')
-MODEL_PATH = os.path.join(BASE_DIR, 'models', 'modelo_evasao_ifms.joblib')
+MODEL_FILES = [
+    'gb_baseline_ifms.joblib',
+    'catboost_sota_ifms.joblib',
+    'tabpfn_sota_ifms.joblib',
+]
 
 BUCKET_NAME = 'evasao-zero-dados-ifms-katy-849275'
 
@@ -52,7 +56,14 @@ def main():
     
     print("\nIniciando migração de artefatos...")
     upload_artefato(s3_client, DATA_PATH, BUCKET_NAME, 'dados/dados_sinteticos_ifms.csv')
-    upload_artefato(s3_client, MODEL_PATH, BUCKET_NAME, 'modelos/modelo_evasao_ifms.joblib')
+    for model_file in MODEL_FILES:
+        model_path = os.path.join(BASE_DIR, 'models', model_file)
+        upload_artefato(
+            s3_client,
+            model_path,
+            BUCKET_NAME,
+            f'modelos/{model_file}',
+        )
     
     print("\n============================================================")
     print("[SUCESSO] Infraestrutura de dados sincronizada com a nuvem.")

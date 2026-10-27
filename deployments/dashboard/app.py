@@ -1,6 +1,5 @@
 import streamlit as st
 import pandas as pd
-import plotly.express as px
 import joblib
 import os
 import sys
@@ -27,10 +26,24 @@ st.markdown("""
 
 # --- Configuração AWS S3 ---
 BUCKET_NAME = 'evasao-zero-dados-ifms-katy-849275'
+MODEL_FILES = {
+    'GradientBoosting (Baseline)': 'gb_baseline_ifms.joblib',
+    'CatBoost (SOTA)': 'catboost_sota_ifms.joblib',
+    'TabPFN / HistGB (SOTA)': 'tabpfn_sota_ifms.joblib',
+}
+FEATURE_COLUMNS = [
+    'curso',
+    'periodo',
+    'idade',
+    'cidade',
+    'renda_total',
+    'trabalha_atualmente',
+    'recebe_auxilio_da_insti',
+]
 
 @st.cache_resource
 def inicializar_nuvem():
-    """Conecta na AWS, baixa os artefatos do S3 e carrega na memória do Dashboard."""
+    """Baixa os três modelos e os dados do S3, carregando-os na memória."""
     bc_session = botocore.session.Session()
     resolver = bc_session.get_component('credential_provider')
     for provider in ['sso', 'sso-token', 'login']:
@@ -40,26 +53,31 @@ def inicializar_nuvem():
             pass
     session = boto3.Session(botocore_session=bc_session)
     s3 = session.client('s3', region_name='us-east-1')
-    modelo_local = 'modelo_nuvem_cache.joblib'
-    dados_local = 'dados_nuvem_cache.csv'
-    
-    # Download do modelo do S3
-    if not os.path.exists(modelo_local):
-        s3.download_file(BUCKET_NAME, 'modelos/modelo_evasao_ifms.joblib', modelo_local)
-    
-    # Download dos dados base do S3 (cumprindo requisito do Trello)
+    modelos = {}
+    for nome, arquivo in MODEL_FILES.items():
+        caminho_local = os.path.join(_PROJECT_ROOT, 'models', arquivo)
+        if not os.path.exists(caminho_local):
+            os.makedirs(os.path.dirname(caminho_local), exist_ok=True)
+            s3.download_file(BUCKET_NAME, f'modelos/{arquivo}', caminho_local)
+        modelos[nome] = joblib.load(caminho_local)
+
+    dados_local = os.path.join(_PROJECT_ROOT, 'data', 'dados_sinteticos_ifms.csv')
     if not os.path.exists(dados_local):
-        s3.download_file(BUCKET_NAME, 'dados/dados_sinteticos_ifms.csv', dados_local)
+        os.makedirs(os.path.dirname(dados_local), exist_ok=True)
+        s3.download_file(
+            BUCKET_NAME,
+            'dados/dados_sinteticos_ifms.csv',
+            dados_local,
+        )
         
-    modelo = joblib.load(modelo_local)
     df_base = pd.read_csv(dados_local)
     
-    return modelo, df_base
+    return modelos, df_base
 
 # Executa a conexão com a nuvem e exibe spinner de carregamento
 with st.spinner('☁️ Sincronizando modelo preditivo com a AWS S3...'):
     try:
-        modelo, df_base = inicializar_nuvem()
+        modelos, df_base = inicializar_nuvem()
     except Exception as e:
         st.error(f"🚨 Falha de comunicação com a Nuvem AWS: {e}")
         st.stop()
@@ -87,14 +105,28 @@ if analisar_btn:
         'trabalha_atualmente': trabalha, 'recebe_auxilio_da_insti': auxilio
     }])
     
-    predicao = modelo.predict(aluno_df)[0]
-    probabilidade = modelo.predict_proba(aluno_df)[0][1]
-    
     st.sidebar.markdown("---")
-    if predicao == 1:
-        st.sidebar.error(f"🚨 **ALTO RISCO DE EVASÃO**\n\nProbabilidade: {probabilidade:.1%}")
-    else:
-        st.sidebar.success(f"✅ **ALUNO ESTÁVEL**\n\nProbabilidade de risco: {probabilidade:.1%}")
+    comparacao_individual = []
+    for nome, modelo in modelos.items():
+        predicao = modelo.predict(aluno_df)[0]
+        probabilidade = modelo.predict_proba(aluno_df)[0][1]
+        comparacao_individual.append({
+            'Modelo': nome,
+            'Classificação': 'Alto risco' if predicao == 1 else 'Estável',
+            'Probabilidade de evasão': probabilidade,
+        })
+
+    resultado_individual = pd.DataFrame(comparacao_individual)
+    st.sidebar.dataframe(
+        resultado_individual.style.format({'Probabilidade de evasão': '{:.1%}'}),
+        hide_index=True,
+        use_container_width=True,
+    )
+    st.subheader("Comparação dos modelos — perfil individual")
+    st.bar_chart(
+        resultado_individual.set_index('Modelo')['Probabilidade de evasão'],
+        y_label='Probabilidade de evasão',
+    )
 
 # --- ÁREA PRINCIPAL: Análise em Lote ---
 st.title("🎓 Predikt IFMS: Monitoramento em Nuvem")
@@ -106,42 +138,49 @@ arquivo_upload = st.file_uploader("Upload de Planilha CSV", type=["csv"])
 if arquivo_upload is not None:
     try:
         df_lote = pd.read_csv(arquivo_upload)
-        colunas_necessarias = ['curso', 'periodo', 'idade', 'cidade', 'renda_total', 'trabalha_atualmente', 'recebe_auxilio_da_insti']
+        colunas_necessarias = FEATURE_COLUMNS
         colunas_faltantes = [col for col in colunas_necessarias if col not in df_lote.columns]
         
         if colunas_faltantes:
             st.error(f"A planilha enviada não possui as colunas obrigatórias. Faltam: {', '.join(colunas_faltantes)}")
         else:
             with st.spinner("Processando lote..."):
-                df_lote['risco_evasao_predito'] = modelo.predict(df_lote[colunas_necessarias])
-                probabilidades = modelo.predict_proba(df_lote[colunas_necessarias])[:, 1]
-                df_lote['probabilidade_risco'] = (probabilidades * 100).round(1)
-                
-                alunos_risco = df_lote[df_lote['risco_evasao_predito'] == 1]
-                
-                col1, col2, col3 = st.columns(3)
-                col1.metric("Total Analisado", len(df_lote))
-                col2.metric("Alunos em Risco", len(alunos_risco), delta_color="inverse")
-                col3.metric("Taxa de Risco", f"{(len(alunos_risco)/len(df_lote))*100:.1f}%")
-                
-                st.markdown("---")
-                col_graf1, col_graf2 = st.columns(2)
-                
-                with col_graf1:
-                    st.subheader("📊 Risco por Renda")
-                    risco_renda = df_lote.groupby('renda_total')['risco_evasao_predito'].mean().reset_index()
-                    fig1 = px.bar(risco_renda, x='renda_total', y='risco_evasao_predito', 
-                                  labels={'risco_evasao_predito': 'Taxa', 'renda_total': 'Renda'}, color='risco_evasao_predito', color_continuous_scale='Reds')
-                    st.plotly_chart(fig1, use_container_width=True)
-                    
-                with col_graf2:
-                    st.subheader("🏢 Risco por Trabalho")
-                    risco_trabalho = df_lote.groupby('trabalha_atualmente')['risco_evasao_predito'].mean().reset_index()
-                    fig2 = px.pie(risco_trabalho, values='risco_evasao_predito', names='trabalha_atualmente', hole=0.4)
-                    st.plotly_chart(fig2, use_container_width=True)
+                comparacoes = []
+                for nome, modelo in modelos.items():
+                    predicoes = modelo.predict(df_lote[colunas_necessarias])
+                    probabilidades = modelo.predict_proba(
+                        df_lote[colunas_necessarias]
+                    )[:, 1]
+                    df_lote[f'{nome} — classificação'] = predicoes
+                    df_lote[f'{nome} — probabilidade'] = (
+                        probabilidades * 100
+                    ).round(1)
+                    comparacoes.append({
+                        'Modelo': nome,
+                        'Alunos em risco': int(predicoes.sum()),
+                        'Taxa de risco': predicoes.mean(),
+                        'Probabilidade média': probabilidades.mean(),
+                    })
 
-                st.subheader("📋 Lista Prioritária (Alunos em Risco)")
-                st.dataframe(alunos_risco.sort_values(by='probabilidade_risco', ascending=False), use_container_width=True)
+                resumo_modelos = pd.DataFrame(comparacoes)
+                st.subheader("Comparação automática dos três modelos")
+                st.dataframe(
+                    resumo_modelos.style.format({
+                        'Taxa de risco': '{:.1%}',
+                        'Probabilidade média': '{:.1%}',
+                    }),
+                    hide_index=True,
+                    use_container_width=True,
+                )
+                st.bar_chart(
+                    resumo_modelos.set_index('Modelo')[
+                        ['Taxa de risco', 'Probabilidade média']
+                    ],
+                    y_label='Índice de evasão',
+                )
+                st.markdown("---")
+                st.subheader("📋 Resultado por aluno")
+                st.dataframe(df_lote, use_container_width=True)
 
     except Exception as e:
         st.error(f"Erro ao processar o arquivo: {e}")

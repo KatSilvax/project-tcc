@@ -7,8 +7,8 @@ usando dados anonimizados e sintéticos derivados das respostas de pesquisa.
 
 1. `data/Respostas_evasao_limpo.csv` é a base de respostas usada no benchmark.
 2. `scripts/02_benchmark_modelos_tcc.py` compara os modelos e treina os artefatos finais.
-3. `deployments/dashboard/app.py` carrega o modelo principal e os dados sincronizados com o S3.
-4. `scripts/03_upload_s3.py` publica o modelo e a base sintética no bucket configurado.
+3. `deployments/dashboard/app.py` carrega os três modelos e os dados sincronizados com o S3.
+4. `scripts/03_upload_s3.py` publica os três modelos e a base sintética no bucket configurado.
 
 O benchmark também gera os resultados em `resultados_benchmark_tcc.csv` e as
 figuras em `figures/tcc/`.
@@ -49,8 +49,9 @@ pip install -r requirements.txt
 
 ## Executar o dashboard
 
-O dashboard depende de credenciais AWS configuradas no ambiente para baixar o
-modelo e os dados do S3:
+O dashboard depende de credenciais AWS configuradas no ambiente para baixar os
+três modelos e os dados do S3. Depois de gerar ou atualizar os modelos, publique
+os arquivos com o script de upload antes de iniciar o dashboard:
 
 ```powershell
 uv run streamlit run deployments/dashboard/app.py
@@ -81,6 +82,11 @@ Para publicar os artefatos no S3:
 ```powershell
 uv run python scripts/03_upload_s3.py
 ```
+
+Na tela, o dashboard executa cada perfil nos três modelos simultaneamente e
+mostra a probabilidade, a classificação e a taxa média de risco lado a lado.
+No modo de lote, todas as colunas de resultado são exibidas automaticamente,
+sem necessidade de selecionar ou filtrar um modelo.
 
 ## Licença
 
