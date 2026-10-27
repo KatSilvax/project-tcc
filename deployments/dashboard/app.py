@@ -3,7 +3,15 @@ import pandas as pd
 import plotly.express as px
 import joblib
 import os
+import sys
 import boto3
+import botocore.session
+
+# Garante que o módulo model_wrapper seja importável para joblib.load()
+# encontrar a classe DashboardCompatibleModel ao deserializar o modelo.
+_PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
+if os.path.join(_PROJECT_ROOT, 'src') not in sys.path:
+    sys.path.insert(0, os.path.join(_PROJECT_ROOT, 'src'))
 
 # --- Configuração da Página e Identidade Visual ---
 st.set_page_config(page_title="Predikt IFMS | Evasão Zero", page_icon="🎓", layout="wide")
@@ -23,7 +31,15 @@ BUCKET_NAME = 'evasao-zero-dados-ifms-katy-849275'
 @st.cache_resource
 def inicializar_nuvem():
     """Conecta na AWS, baixa os artefatos do S3 e carrega na memória do Dashboard."""
-    s3 = boto3.client('s3', region_name='us-east-1')
+    bc_session = botocore.session.Session()
+    resolver = bc_session.get_component('credential_provider')
+    for provider in ['sso', 'sso-token', 'login']:
+        try:
+            resolver.remove(provider)
+        except Exception:
+            pass
+    session = boto3.Session(botocore_session=bc_session)
+    s3 = session.client('s3', region_name='us-east-1')
     modelo_local = 'modelo_nuvem_cache.joblib'
     dados_local = 'dados_nuvem_cache.csv'
     

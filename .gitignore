@@ -25,4 +25,9 @@ dados_nuvem_cache.csv
 # Logs e Cache
 *.log
 .ipynb_checkpoints/
+catboost_info/
+*.egg-info/
+.pytest_cache/
 uv.lock
+# Configuração local de ferramentas
+.kiro/
