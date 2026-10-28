@@ -1,0 +1,45 @@
+secao,variavel,categoria,valor,contagem
+resumo,n_linhas,,194.0,
+resumo,proporcao_classe_0,,0.6237113402061856,121
+resumo,proporcao_classe_1,,0.37628865979381443,73
+nulos,curso,,0.0,0
+distribuicao,curso,edificacoes,0.36597938144329895,71
+distribuicao,curso,informatica,0.31443298969072164,61
+distribuicao,curso,computacao,0.21649484536082475,42
+distribuicao,curso,arquitetura,0.10309278350515463,20
+nulos,periodo,,0.0,0
+distribuicao,periodo,1,0.4020618556701031,78
+distribuicao,periodo,3,0.3865979381443299,75
+distribuicao,periodo,5,0.18556701030927836,36
+distribuicao,periodo,7,0.02577319587628866,5
+nulos,idade,,0.0,0
+distribuicao,idade,15 a 18 anos,0.654639175257732,127
+distribuicao,idade,menos de 15 anos,0.14432989690721648,28
+distribuicao,idade,19 a 24 anos,0.10824742268041238,21
+distribuicao,idade,31 a 40 anos,0.041237113402061855,8
+distribuicao,idade,mais de 40 anos,0.02577319587628866,5
+distribuicao,idade,25 a 30 anos,0.02577319587628866,5
+nulos,cidade,,0.0,0
+distribuicao,cidade,Jardim,0.788659793814433,153
+distribuicao,cidade,Guia Lopes,0.11855670103092783,23
+distribuicao,cidade,Nioaque,0.04639175257731959,9
+distribuicao,cidade,Bela Vista,0.030927835051546393,6
+distribuicao,cidade,Bonito,0.005154639175257732,1
+distribuicao,cidade,Dourados,0.005154639175257732,1
+distribuicao,cidade,Alto Caracol,0.005154639175257732,1
+nulos,renda_total,,0.0,0
+distribuicao,renda_total,entre 2 e 4 salarios minimos,0.23195876288659795,45
+distribuicao,renda_total,entre 1 e 2 salarios minimos,0.20618556701030927,40
+distribuicao,renda_total,nao informado,0.17010309278350516,33
+distribuicao,renda_total,entre 4 e 6 salarios minimos,0.16494845360824742,32
+distribuicao,renda_total,ate 1 salario minimo,0.15979381443298968,31
+distribuicao,renda_total,mais de 6 salarios minimos,0.06701030927835051,13
+nulos,trabalha_atualmente,,0.0,0
+distribuicao,trabalha_atualmente,nao,0.4845360824742268,94
+distribuicao,trabalha_atualmente,"nao, mas estou procurando",0.24742268041237114,48
+distribuicao,trabalha_atualmente,"sim, em meio periodo",0.16494845360824742,32
+distribuicao,trabalha_atualmente,"sim, em periodo integral",0.10309278350515463,20
+nulos,recebe_auxilio_da_insti,,0.0,0
+distribuicao,recebe_auxilio_da_insti,nao,0.6855670103092784,133
+distribuicao,recebe_auxilio_da_insti,ja solicitei e aguardo reposta,0.23195876288659795,45
+distribuicao,recebe_auxilio_da_insti,sim,0.08247422680412371,16

@@ -29,5 +29,6 @@ catboost_info/
 *.egg-info/
 .pytest_cache/
 uv.lock
-# Configuração local de ferramentas
+# Configuraï¿½ï¿½o local de ferramentas
 .kiro/
+contexto-tcc.md

@@ -1,0 +1,151 @@
+cenario,metrica,modelo_a,modelo_b,estatistica_wilcoxon,p_valor,diferenca_media_a_menos_b,n_pares,p_valor_holm,significativo_05
+A_Real,roc_auc,Dummy (prior),Dummy (stratified),6.0,0.75,-0.007309523809523766,5,1.0,False
+A_Real,roc_auc,Dummy (prior),LogisticRegression,1.0,0.125,-0.08005952380952382,5,1.0,False
+A_Real,roc_auc,Dummy (prior),GradientBoosting (Baseline),1.0,0.125,-0.10300396825396826,5,1.0,False
+A_Real,roc_auc,Dummy (prior),CatBoost (SOTA),1.0,0.125,-0.08248015873015872,5,1.0,False
+A_Real,roc_auc,Dummy (prior),TabPFN / HistGB (SOTA),0.0,0.0625,-0.10315873015873016,5,0.9375,False
+A_Real,roc_auc,Dummy (stratified),LogisticRegression,3.0,0.3125,-0.07275000000000005,5,1.0,False
+A_Real,roc_auc,Dummy (stratified),GradientBoosting (Baseline),1.0,0.125,-0.0956944444444445,5,1.0,False
+A_Real,roc_auc,Dummy (stratified),CatBoost (SOTA),3.0,0.3125,-0.07517063492063496,5,1.0,False
+A_Real,roc_auc,Dummy (stratified),TabPFN / HistGB (SOTA),1.0,0.125,-0.09584920634920639,5,1.0,False
+A_Real,roc_auc,LogisticRegression,GradientBoosting (Baseline),3.0,0.3125,-0.022944444444444455,5,1.0,False
+A_Real,roc_auc,LogisticRegression,CatBoost (SOTA),7.0,1.0,-0.002420634920634912,5,1.0,False
+A_Real,roc_auc,LogisticRegression,TabPFN / HistGB (SOTA),1.0,0.125,-0.02309920634920635,5,1.0,False
+A_Real,roc_auc,GradientBoosting (Baseline),CatBoost (SOTA),6.0,0.8125,0.020523809523809545,5,1.0,False
+A_Real,roc_auc,GradientBoosting (Baseline),TabPFN / HistGB (SOTA),7.0,1.0,-0.0001547619047618909,5,1.0,False
+A_Real,roc_auc,CatBoost (SOTA),TabPFN / HistGB (SOTA),5.0,0.625,-0.020678571428571435,5,1.0,False
+A_Real,f1_macro,Dummy (prior),Dummy (stratified),0.0,0.0625,-0.1179669451820243,5,0.9375,False
+A_Real,f1_macro,Dummy (prior),LogisticRegression,0.0,0.0625,-0.16819062099345286,5,0.9375,False
+A_Real,f1_macro,Dummy (prior),GradientBoosting (Baseline),0.0,0.0625,-0.18837690821592232,5,0.9375,False
+A_Real,f1_macro,Dummy (prior),CatBoost (SOTA),0.0,0.0625,-0.1933304162313923,5,0.9375,False
+A_Real,f1_macro,Dummy (prior),TabPFN / HistGB (SOTA),0.0,0.0625,-0.19942843343093222,5,0.9375,False
+A_Real,f1_macro,Dummy (stratified),LogisticRegression,5.0,0.625,-0.05022367581142854,5,1.0,False
+A_Real,f1_macro,Dummy (stratified),GradientBoosting (Baseline),3.0,0.3125,-0.07040996303389802,5,1.0,False
+A_Real,f1_macro,Dummy (stratified),CatBoost (SOTA),1.0,0.125,-0.075363471049368,5,1.0,False
+A_Real,f1_macro,Dummy (stratified),TabPFN / HistGB (SOTA),2.0,0.1875,-0.08146148824890789,5,1.0,False
+A_Real,f1_macro,LogisticRegression,GradientBoosting (Baseline),4.0,0.4375,-0.020186287222469478,5,1.0,False
+A_Real,f1_macro,LogisticRegression,CatBoost (SOTA),4.0,0.4375,-0.025139795237939456,5,1.0,False
+A_Real,f1_macro,LogisticRegression,TabPFN / HistGB (SOTA),6.0,0.8125,-0.03123781243747935,5,1.0,False
+A_Real,f1_macro,GradientBoosting (Baseline),CatBoost (SOTA),7.0,1.0,-0.0049535080154699766,5,1.0,False
+A_Real,f1_macro,GradientBoosting (Baseline),TabPFN / HistGB (SOTA),6.0,0.8125,-0.011051525215009872,5,1.0,False
+A_Real,f1_macro,CatBoost (SOTA),TabPFN / HistGB (SOTA),6.0,0.8125,-0.006098017199539896,5,1.0,False
+A_Real,recall,Dummy (prior),Dummy (stratified),0.0,0.0625,-0.2876190476190476,5,0.9375,False
+A_Real,recall,Dummy (prior),LogisticRegression,0.0,0.0625,-0.3123809523809523,5,0.9375,False
+A_Real,recall,Dummy (prior),GradientBoosting (Baseline),0.0,0.0625,-0.4352380952380952,5,0.9375,False
+A_Real,recall,Dummy (prior),CatBoost (SOTA),0.0,0.0625,-0.5628571428571428,5,0.9375,False
+A_Real,recall,Dummy (prior),TabPFN / HistGB (SOTA),0.0,0.0625,-0.6019047619047619,5,0.9375,False
+A_Real,recall,Dummy (stratified),LogisticRegression,5.0,0.625,-0.02476190476190477,5,1.0,False
+A_Real,recall,Dummy (stratified),GradientBoosting (Baseline),1.0,0.125,-0.14761904761904762,5,0.9375,False
+A_Real,recall,Dummy (stratified),CatBoost (SOTA),0.0,0.0625,-0.2752380952380952,5,0.9375,False
+A_Real,recall,Dummy (stratified),TabPFN / HistGB (SOTA),0.0,0.0625,-0.3142857142857143,5,0.9375,False
+A_Real,recall,LogisticRegression,GradientBoosting (Baseline),0.0,0.0625,-0.12285714285714286,5,0.9375,False
+A_Real,recall,LogisticRegression,CatBoost (SOTA),0.0,0.0625,-0.25047619047619046,5,0.9375,False
+A_Real,recall,LogisticRegression,TabPFN / HistGB (SOTA),0.0,0.0625,-0.28952380952380957,5,0.9375,False
+A_Real,recall,GradientBoosting (Baseline),CatBoost (SOTA),0.0,0.25,-0.1276190476190476,5,0.9375,False
+A_Real,recall,GradientBoosting (Baseline),TabPFN / HistGB (SOTA),1.0,0.125,-0.16666666666666669,5,0.9375,False
+A_Real,recall,CatBoost (SOTA),TabPFN / HistGB (SOTA),6.5,0.875,-0.039047619047619074,5,1.0,False
+A_Real,precision,Dummy (prior),Dummy (stratified),0.0,0.0625,-0.38727272727272727,5,0.9375,False
+A_Real,precision,Dummy (prior),LogisticRegression,0.0,0.0625,-0.5074242424242424,5,0.9375,False
+A_Real,precision,Dummy (prior),GradientBoosting (Baseline),0.0,0.0625,-0.47421328671328666,5,0.9375,False
+A_Real,precision,Dummy (prior),CatBoost (SOTA),0.0,0.0625,-0.4631031543052003,5,0.9375,False
+A_Real,precision,Dummy (prior),TabPFN / HistGB (SOTA),0.0,0.0625,-0.46749999999999997,5,0.9375,False
+A_Real,precision,Dummy (stratified),LogisticRegression,3.0,0.3125,-0.12015151515151515,5,1.0,False
+A_Real,precision,Dummy (stratified),GradientBoosting (Baseline),4.0,0.4375,-0.08694055944055944,5,1.0,False
+A_Real,precision,Dummy (stratified),CatBoost (SOTA),2.0,0.1875,-0.07583042703247309,5,1.0,False
+A_Real,precision,Dummy (stratified),TabPFN / HistGB (SOTA),3.0,0.3125,-0.08022727272727273,5,1.0,False
+A_Real,precision,LogisticRegression,GradientBoosting (Baseline),3.0,0.625,0.033210955710955704,5,1.0,False
+A_Real,precision,LogisticRegression,CatBoost (SOTA),5.0,0.625,0.04432108811904206,5,1.0,False
+A_Real,precision,LogisticRegression,TabPFN / HistGB (SOTA),6.0,0.8125,0.03992424242424242,5,1.0,False
+A_Real,precision,GradientBoosting (Baseline),CatBoost (SOTA),6.0,0.8125,0.01111013240808636,5,1.0,False
+A_Real,precision,GradientBoosting (Baseline),TabPFN / HistGB (SOTA),7.0,1.0,0.006713286713286715,5,1.0,False
+A_Real,precision,CatBoost (SOTA),TabPFN / HistGB (SOTA),6.0,0.8125,-0.004396845694799645,5,1.0,False
+A_Real,brier,Dummy (prior),Dummy (stratified),0.0,0.0625,-0.20357676237514424,5,0.9375,False
+A_Real,brier,Dummy (prior),LogisticRegression,4.0,0.4375,-0.013522196889675625,5,1.0,False
+A_Real,brier,Dummy (prior),GradientBoosting (Baseline),5.0,0.625,-0.03828545368813901,5,1.0,False
+A_Real,brier,Dummy (prior),CatBoost (SOTA),3.0,0.3125,-0.011109182935970702,5,1.0,False
+A_Real,brier,Dummy (prior),TabPFN / HistGB (SOTA),3.0,0.3125,-0.01427473539484429,5,1.0,False
+A_Real,brier,Dummy (stratified),LogisticRegression,0.0,0.0625,0.19005456548546856,5,0.9375,False
+A_Real,brier,Dummy (stratified),GradientBoosting (Baseline),0.0,0.0625,0.1652913086870052,5,0.9375,False
+A_Real,brier,Dummy (stratified),CatBoost (SOTA),0.0,0.0625,0.19246757943917353,5,0.9375,False
+A_Real,brier,Dummy (stratified),TabPFN / HistGB (SOTA),0.0,0.0625,0.1893020269802999,5,0.9375,False
+A_Real,brier,LogisticRegression,GradientBoosting (Baseline),4.0,0.4375,-0.024763256798463383,5,1.0,False
+A_Real,brier,LogisticRegression,CatBoost (SOTA),7.0,1.0,0.0024130139537049235,5,1.0,False
+A_Real,brier,LogisticRegression,TabPFN / HistGB (SOTA),7.0,1.0,-0.000752538505168665,5,1.0,False
+A_Real,brier,GradientBoosting (Baseline),CatBoost (SOTA),5.0,0.625,0.02717627075216831,5,1.0,False
+A_Real,brier,GradientBoosting (Baseline),TabPFN / HistGB (SOTA),6.0,0.8125,0.02401071829329472,5,1.0,False
+A_Real,brier,CatBoost (SOTA),TabPFN / HistGB (SOTA),7.0,1.0,-0.0031655524588735883,5,1.0,False
+B_SDV1000,roc_auc,Dummy (prior),Dummy (stratified),5.0,0.625,-0.005119047619047556,5,1.0,False
+B_SDV1000,roc_auc,Dummy (prior),LogisticRegression,4.0,0.4375,-0.057829365079365105,5,1.0,False
+B_SDV1000,roc_auc,Dummy (prior),GradientBoosting (Baseline),3.0,0.3125,-0.061019841269841266,5,1.0,False
+B_SDV1000,roc_auc,Dummy (prior),CatBoost (SOTA),1.0,0.125,-0.07150793650793652,5,1.0,False
+B_SDV1000,roc_auc,Dummy (prior),TabPFN / HistGB (SOTA),3.0,0.3125,-0.07574206349206349,5,1.0,False
+B_SDV1000,roc_auc,Dummy (stratified),LogisticRegression,3.0,0.3125,-0.05271031746031755,5,1.0,False
+B_SDV1000,roc_auc,Dummy (stratified),GradientBoosting (Baseline),3.0,0.3125,-0.055900793650793715,5,1.0,False
+B_SDV1000,roc_auc,Dummy (stratified),CatBoost (SOTA),3.0,0.3125,-0.06638888888888897,5,1.0,False
+B_SDV1000,roc_auc,Dummy (stratified),TabPFN / HistGB (SOTA),3.0,0.3125,-0.07062301587301592,5,1.0,False
+B_SDV1000,roc_auc,LogisticRegression,GradientBoosting (Baseline),7.0,1.0,-0.003190476190476166,5,1.0,False
+B_SDV1000,roc_auc,LogisticRegression,CatBoost (SOTA),5.0,0.625,-0.013678571428571418,5,1.0,False
+B_SDV1000,roc_auc,LogisticRegression,TabPFN / HistGB (SOTA),5.0,0.625,-0.01791269841269838,5,1.0,False
+B_SDV1000,roc_auc,GradientBoosting (Baseline),CatBoost (SOTA),5.0,0.625,-0.010488095238095251,5,1.0,False
+B_SDV1000,roc_auc,GradientBoosting (Baseline),TabPFN / HistGB (SOTA),3.0,0.3125,-0.014722222222222215,5,1.0,False
+B_SDV1000,roc_auc,CatBoost (SOTA),TabPFN / HistGB (SOTA),5.0,0.625,-0.004234126984126963,5,1.0,False
+B_SDV1000,f1_macro,Dummy (prior),Dummy (stratified),0.0,0.0625,-0.1163186895243347,5,0.9375,False
+B_SDV1000,f1_macro,Dummy (prior),LogisticRegression,1.0,0.125,-0.16453950972143178,5,1.0,False
+B_SDV1000,f1_macro,Dummy (prior),GradientBoosting (Baseline),0.0,0.0625,-0.15051003838769747,5,0.9375,False
+B_SDV1000,f1_macro,Dummy (prior),CatBoost (SOTA),0.0,0.0625,-0.1674992448777806,5,0.9375,False
+B_SDV1000,f1_macro,Dummy (prior),TabPFN / HistGB (SOTA),1.0,0.125,-0.15453343752444904,5,1.0,False
+B_SDV1000,f1_macro,Dummy (stratified),LogisticRegression,5.0,0.625,-0.0482208201970971,5,1.0,False
+B_SDV1000,f1_macro,Dummy (stratified),GradientBoosting (Baseline),4.0,0.4375,-0.034191348863362794,5,1.0,False
+B_SDV1000,f1_macro,Dummy (stratified),CatBoost (SOTA),4.0,0.4375,-0.0511805553534459,5,1.0,False
+B_SDV1000,f1_macro,Dummy (stratified),TabPFN / HistGB (SOTA),5.0,0.625,-0.03821474800011433,5,1.0,False
+B_SDV1000,f1_macro,LogisticRegression,GradientBoosting (Baseline),7.0,1.0,0.014029471333734311,5,1.0,False
+B_SDV1000,f1_macro,LogisticRegression,CatBoost (SOTA),7.0,1.0,-0.0029597351563487974,5,1.0,False
+B_SDV1000,f1_macro,LogisticRegression,TabPFN / HistGB (SOTA),7.0,1.0,0.010006072196982773,5,1.0,False
+B_SDV1000,f1_macro,GradientBoosting (Baseline),CatBoost (SOTA),6.0,0.8125,-0.01698920649008311,5,1.0,False
+B_SDV1000,f1_macro,GradientBoosting (Baseline),TabPFN / HistGB (SOTA),6.0,0.8125,-0.004023399136751538,5,1.0,False
+B_SDV1000,f1_macro,CatBoost (SOTA),TabPFN / HistGB (SOTA),5.0,0.625,0.012965807353331572,5,1.0,False
+B_SDV1000,recall,Dummy (prior),Dummy (stratified),0.0,0.0625,-0.3152380952380952,5,0.9375,False
+B_SDV1000,recall,Dummy (prior),LogisticRegression,0.0,0.0625,-0.2838095238095238,5,0.9375,False
+B_SDV1000,recall,Dummy (prior),GradientBoosting (Baseline),0.0,0.0625,-0.2314285714285714,5,0.9375,False
+B_SDV1000,recall,Dummy (prior),CatBoost (SOTA),0.0,0.0625,-0.5323809523809524,5,0.9375,False
+B_SDV1000,recall,Dummy (prior),TabPFN / HistGB (SOTA),0.0,0.0625,-0.5314285714285714,5,0.9375,False
+B_SDV1000,recall,Dummy (stratified),LogisticRegression,4.5,1.0,0.03142857142857142,5,1.0,False
+B_SDV1000,recall,Dummy (stratified),GradientBoosting (Baseline),3.0,0.625,0.0838095238095238,5,1.0,False
+B_SDV1000,recall,Dummy (stratified),CatBoost (SOTA),2.0,0.1875,-0.21714285714285717,5,1.0,False
+B_SDV1000,recall,Dummy (stratified),TabPFN / HistGB (SOTA),2.0,0.1875,-0.2161904761904762,5,1.0,False
+B_SDV1000,recall,LogisticRegression,GradientBoosting (Baseline),3.0,0.625,0.052380952380952375,5,1.0,False
+B_SDV1000,recall,LogisticRegression,CatBoost (SOTA),0.0,0.0625,-0.24857142857142858,5,0.9375,False
+B_SDV1000,recall,LogisticRegression,TabPFN / HistGB (SOTA),0.0,0.0625,-0.24761904761904763,5,0.9375,False
+B_SDV1000,recall,GradientBoosting (Baseline),CatBoost (SOTA),0.0,0.0625,-0.30095238095238097,5,0.9375,False
+B_SDV1000,recall,GradientBoosting (Baseline),TabPFN / HistGB (SOTA),0.0,0.0625,-0.3,5,0.9375,False
+B_SDV1000,recall,CatBoost (SOTA),TabPFN / HistGB (SOTA),1.0,1.0,0.0009523809523809712,5,1.0,False
+B_SDV1000,precision,Dummy (prior),Dummy (stratified),0.0,0.0625,-0.38196969696969696,5,0.9375,False
+B_SDV1000,precision,Dummy (prior),LogisticRegression,0.0,0.0625,-0.533968253968254,5,0.9375,False
+B_SDV1000,precision,Dummy (prior),GradientBoosting (Baseline),0.0,0.0625,-0.5772727272727273,5,0.9375,False
+B_SDV1000,precision,Dummy (prior),CatBoost (SOTA),0.0,0.0625,-0.4320728291316526,5,0.9375,False
+B_SDV1000,precision,Dummy (prior),TabPFN / HistGB (SOTA),0.0,0.0625,-0.41708556149732623,5,0.9375,False
+B_SDV1000,precision,Dummy (stratified),LogisticRegression,3.0,0.3125,-0.151998556998557,5,1.0,False
+B_SDV1000,precision,Dummy (stratified),GradientBoosting (Baseline),1.0,0.125,-0.1953030303030303,5,1.0,False
+B_SDV1000,precision,Dummy (stratified),CatBoost (SOTA),4.0,0.4375,-0.05010313216195568,5,1.0,False
+B_SDV1000,precision,Dummy (stratified),TabPFN / HistGB (SOTA),3.0,0.625,-0.035115864527629236,5,1.0,False
+B_SDV1000,precision,LogisticRegression,GradientBoosting (Baseline),3.0,0.3125,-0.043304473304473304,5,1.0,False
+B_SDV1000,precision,LogisticRegression,CatBoost (SOTA),4.0,0.4375,0.1018954248366013,5,1.0,False
+B_SDV1000,precision,LogisticRegression,TabPFN / HistGB (SOTA),2.0,0.1875,0.11688269247092775,5,1.0,False
+B_SDV1000,precision,GradientBoosting (Baseline),CatBoost (SOTA),0.0,0.125,0.14519989814107465,5,1.0,False
+B_SDV1000,precision,GradientBoosting (Baseline),TabPFN / HistGB (SOTA),2.0,0.1875,0.16018716577540107,5,1.0,False
+B_SDV1000,precision,CatBoost (SOTA),TabPFN / HistGB (SOTA),5.0,0.625,0.01498726763432644,5,1.0,False
+B_SDV1000,brier,Dummy (prior),Dummy (stratified),0.0,0.0625,-0.21262828867404843,5,0.9375,False
+B_SDV1000,brier,Dummy (prior),LogisticRegression,7.0,1.0,-0.0025890173521121995,5,1.0,False
+B_SDV1000,brier,Dummy (prior),GradientBoosting (Baseline),7.0,1.0,-0.0021471467089087537,5,1.0,False
+B_SDV1000,brier,Dummy (prior),CatBoost (SOTA),0.0,0.0625,-0.011047767789816537,5,0.9375,False
+B_SDV1000,brier,Dummy (prior),TabPFN / HistGB (SOTA),3.0,0.3125,-0.009803589810367714,5,1.0,False
+B_SDV1000,brier,Dummy (stratified),LogisticRegression,0.0,0.0625,0.2100392713219362,5,0.9375,False
+B_SDV1000,brier,Dummy (stratified),GradientBoosting (Baseline),0.0,0.0625,0.21048114196513962,5,0.9375,False
+B_SDV1000,brier,Dummy (stratified),CatBoost (SOTA),0.0,0.0625,0.2015805208842319,5,0.9375,False
+B_SDV1000,brier,Dummy (stratified),TabPFN / HistGB (SOTA),0.0,0.0625,0.20282469886368068,5,0.9375,False
+B_SDV1000,brier,LogisticRegression,GradientBoosting (Baseline),7.0,1.0,0.0004418706432034458,5,1.0,False
+B_SDV1000,brier,LogisticRegression,CatBoost (SOTA),3.0,0.3125,-0.008458750437704337,5,1.0,False
+B_SDV1000,brier,LogisticRegression,TabPFN / HistGB (SOTA),0.0,0.0625,-0.007214572458255514,5,0.9375,False
+B_SDV1000,brier,GradientBoosting (Baseline),CatBoost (SOTA),3.0,0.3125,-0.008900621080907783,5,1.0,False
+B_SDV1000,brier,GradientBoosting (Baseline),TabPFN / HistGB (SOTA),1.0,0.125,-0.00765644310145896,5,1.0,False
+B_SDV1000,brier,CatBoost (SOTA),TabPFN / HistGB (SOTA),7.0,1.0,0.0012441779794488239,5,1.0,False

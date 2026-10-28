@@ -1,0 +1,4 @@
+modelo,implementacao,modulo_benchmark,seed,python,numpy,pandas,sklearn,catboost,shap,sdv,tabpfn
+GradientBoosting (Baseline),GBGridSearchWrapper,C:\Users\Usuario\OneDrive\Desktop\IC 2025\evasao-zero\scripts\02_benchmark_modelos_tcc.py,42,3.11.5,2.4.6,2.3.3,1.9.1,1.2.10,0.49.1,2.0.0,não instalado
+CatBoost (SOTA),CatBoostWrapper,C:\Users\Usuario\OneDrive\Desktop\IC 2025\evasao-zero\scripts\02_benchmark_modelos_tcc.py,42,3.11.5,2.4.6,2.3.3,1.9.1,1.2.10,0.49.1,2.0.0,não instalado
+TabPFN / HistGB (SOTA),fallback HistGradientBoosting,C:\Users\Usuario\OneDrive\Desktop\IC 2025\evasao-zero\scripts\02_benchmark_modelos_tcc.py,42,3.11.5,2.4.6,2.3.3,1.9.1,1.2.10,0.49.1,2.0.0,não instalado

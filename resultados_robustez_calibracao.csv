@@ -1,0 +1,121 @@
+repeticao,fold,modelo,cenario,metodo,etapa,brier
+1,1,GradientBoosting (Baseline),A_Real,sigmoid,antes,0.21950383524257872
+1,1,GradientBoosting (Baseline),A_Real,sigmoid,depois,0.23769142541630542
+1,1,GradientBoosting (Baseline),A_Real,isotonic,antes,0.21950383524257872
+1,1,GradientBoosting (Baseline),A_Real,isotonic,depois,0.246506875599191
+1,1,CatBoost (SOTA),A_Real,sigmoid,antes,0.2566894949621708
+1,1,CatBoost (SOTA),A_Real,sigmoid,depois,0.24360971662906047
+1,1,CatBoost (SOTA),A_Real,isotonic,antes,0.2566894949621708
+1,1,CatBoost (SOTA),A_Real,isotonic,depois,0.23817969382123982
+1,1,TabPFN / HistGB (SOTA),A_Real,sigmoid,antes,0.24010269173462917
+1,1,TabPFN / HistGB (SOTA),A_Real,sigmoid,depois,0.2376739477640345
+1,1,TabPFN / HistGB (SOTA),A_Real,isotonic,antes,0.24010269173462917
+1,1,TabPFN / HistGB (SOTA),A_Real,isotonic,depois,0.23980889896275853
+1,1,GradientBoosting (Baseline),B_SDV1000,sigmoid,antes,0.23861535828525732
+1,1,GradientBoosting (Baseline),B_SDV1000,sigmoid,depois,0.24980471131153933
+1,1,GradientBoosting (Baseline),B_SDV1000,isotonic,antes,0.23861535828525732
+1,1,GradientBoosting (Baseline),B_SDV1000,isotonic,depois,0.2671448946078568
+1,1,CatBoost (SOTA),B_SDV1000,sigmoid,antes,0.24390974035799587
+1,1,CatBoost (SOTA),B_SDV1000,sigmoid,depois,0.2296189832980535
+1,1,CatBoost (SOTA),B_SDV1000,isotonic,antes,0.24390974035799587
+1,1,CatBoost (SOTA),B_SDV1000,isotonic,depois,0.2603986821578666
+1,1,TabPFN / HistGB (SOTA),B_SDV1000,sigmoid,antes,0.2528264527003148
+1,1,TabPFN / HistGB (SOTA),B_SDV1000,sigmoid,depois,0.24480836902432487
+1,1,TabPFN / HistGB (SOTA),B_SDV1000,isotonic,antes,0.2528264527003148
+1,1,TabPFN / HistGB (SOTA),B_SDV1000,isotonic,depois,0.255791976996182
+1,2,GradientBoosting (Baseline),A_Real,sigmoid,antes,0.2514990453697382
+1,2,GradientBoosting (Baseline),A_Real,sigmoid,depois,0.28495924187490385
+1,2,GradientBoosting (Baseline),A_Real,isotonic,antes,0.2514990453697382
+1,2,GradientBoosting (Baseline),A_Real,isotonic,depois,0.2847051566756463
+1,2,CatBoost (SOTA),A_Real,sigmoid,antes,0.2164183677997614
+1,2,CatBoost (SOTA),A_Real,sigmoid,depois,0.2029660926767168
+1,2,CatBoost (SOTA),A_Real,isotonic,antes,0.2164183677997614
+1,2,CatBoost (SOTA),A_Real,isotonic,depois,0.19025860379842865
+1,2,TabPFN / HistGB (SOTA),A_Real,sigmoid,antes,0.2560892318911989
+1,2,TabPFN / HistGB (SOTA),A_Real,sigmoid,depois,0.2579505465624931
+1,2,TabPFN / HistGB (SOTA),A_Real,isotonic,antes,0.2560892318911989
+1,2,TabPFN / HistGB (SOTA),A_Real,isotonic,depois,0.27068580081445914
+1,2,GradientBoosting (Baseline),B_SDV1000,sigmoid,antes,0.23006747772265035
+1,2,GradientBoosting (Baseline),B_SDV1000,sigmoid,depois,0.23263745104233713
+1,2,GradientBoosting (Baseline),B_SDV1000,isotonic,antes,0.23006747772265035
+1,2,GradientBoosting (Baseline),B_SDV1000,isotonic,depois,0.23114690466623783
+1,2,CatBoost (SOTA),B_SDV1000,sigmoid,antes,0.24153188497559802
+1,2,CatBoost (SOTA),B_SDV1000,sigmoid,depois,0.23104817596520524
+1,2,CatBoost (SOTA),B_SDV1000,isotonic,antes,0.24153188497559802
+1,2,CatBoost (SOTA),B_SDV1000,isotonic,depois,0.2281643938005215
+1,2,TabPFN / HistGB (SOTA),B_SDV1000,sigmoid,antes,0.2406118947363206
+1,2,TabPFN / HistGB (SOTA),B_SDV1000,sigmoid,depois,0.23249813173969897
+1,2,TabPFN / HistGB (SOTA),B_SDV1000,isotonic,antes,0.2406118947363206
+1,2,TabPFN / HistGB (SOTA),B_SDV1000,isotonic,depois,0.2303070446504234
+1,3,GradientBoosting (Baseline),A_Real,sigmoid,antes,0.22848092802244294
+1,3,GradientBoosting (Baseline),A_Real,sigmoid,depois,0.2345922291350829
+1,3,GradientBoosting (Baseline),A_Real,isotonic,antes,0.22848092802244294
+1,3,GradientBoosting (Baseline),A_Real,isotonic,depois,0.2471722362641904
+1,3,CatBoost (SOTA),A_Real,sigmoid,antes,0.25040509016648965
+1,3,CatBoost (SOTA),A_Real,sigmoid,depois,0.24974603611074975
+1,3,CatBoost (SOTA),A_Real,isotonic,antes,0.25040509016648965
+1,3,CatBoost (SOTA),A_Real,isotonic,depois,0.2604324225497128
+1,3,TabPFN / HistGB (SOTA),A_Real,sigmoid,antes,0.23960781230512984
+1,3,TabPFN / HistGB (SOTA),A_Real,sigmoid,depois,0.2316401836894648
+1,3,TabPFN / HistGB (SOTA),A_Real,isotonic,antes,0.23960781230512984
+1,3,TabPFN / HistGB (SOTA),A_Real,isotonic,depois,0.25608368049744684
+1,3,GradientBoosting (Baseline),B_SDV1000,sigmoid,antes,0.21628598475430863
+1,3,GradientBoosting (Baseline),B_SDV1000,sigmoid,depois,0.21353263085840388
+1,3,GradientBoosting (Baseline),B_SDV1000,isotonic,antes,0.21628598475430863
+1,3,GradientBoosting (Baseline),B_SDV1000,isotonic,depois,0.20654560436342842
+1,3,CatBoost (SOTA),B_SDV1000,sigmoid,antes,0.23812124445204838
+1,3,CatBoost (SOTA),B_SDV1000,sigmoid,depois,0.22468266289407424
+1,3,CatBoost (SOTA),B_SDV1000,isotonic,antes,0.23812124445204838
+1,3,CatBoost (SOTA),B_SDV1000,isotonic,depois,0.22073204953590667
+1,3,TabPFN / HistGB (SOTA),B_SDV1000,sigmoid,antes,0.2266845445407649
+1,3,TabPFN / HistGB (SOTA),B_SDV1000,sigmoid,depois,0.2125072890910698
+1,3,TabPFN / HistGB (SOTA),B_SDV1000,isotonic,antes,0.2266845445407649
+1,3,TabPFN / HistGB (SOTA),B_SDV1000,isotonic,depois,0.21465980020434877
+1,4,GradientBoosting (Baseline),A_Real,sigmoid,antes,0.2713852329877665
+1,4,GradientBoosting (Baseline),A_Real,sigmoid,depois,0.31158354065472155
+1,4,GradientBoosting (Baseline),A_Real,isotonic,antes,0.2713852329877665
+1,4,GradientBoosting (Baseline),A_Real,isotonic,depois,0.3239392724215217
+1,4,CatBoost (SOTA),A_Real,sigmoid,antes,0.2633398128280784
+1,4,CatBoost (SOTA),A_Real,sigmoid,depois,0.25962863679126236
+1,4,CatBoost (SOTA),A_Real,isotonic,antes,0.2633398128280784
+1,4,CatBoost (SOTA),A_Real,isotonic,depois,0.27537437455281255
+1,4,TabPFN / HistGB (SOTA),A_Real,sigmoid,antes,0.27063147396565107
+1,4,TabPFN / HistGB (SOTA),A_Real,sigmoid,depois,0.27133408568253137
+1,4,TabPFN / HistGB (SOTA),A_Real,isotonic,antes,0.27063147396565107
+1,4,TabPFN / HistGB (SOTA),A_Real,isotonic,depois,0.2695715015821009
+1,4,GradientBoosting (Baseline),B_SDV1000,sigmoid,antes,0.2656484128209757
+1,4,GradientBoosting (Baseline),B_SDV1000,sigmoid,depois,0.2868550138673897
+1,4,GradientBoosting (Baseline),B_SDV1000,isotonic,antes,0.2656484128209757
+1,4,GradientBoosting (Baseline),B_SDV1000,isotonic,depois,0.28558548317227533
+1,4,CatBoost (SOTA),B_SDV1000,sigmoid,antes,0.2619174899705615
+1,4,CatBoost (SOTA),B_SDV1000,sigmoid,depois,0.2598582465472447
+1,4,CatBoost (SOTA),B_SDV1000,isotonic,antes,0.2619174899705615
+1,4,CatBoost (SOTA),B_SDV1000,isotonic,depois,0.26670892850256644
+1,4,TabPFN / HistGB (SOTA),B_SDV1000,sigmoid,antes,0.27539829925673953
+1,4,TabPFN / HistGB (SOTA),B_SDV1000,sigmoid,depois,0.2773095907999708
+1,4,TabPFN / HistGB (SOTA),B_SDV1000,isotonic,antes,0.27539829925673953
+1,4,TabPFN / HistGB (SOTA),B_SDV1000,isotonic,depois,0.2903943268629639
+1,5,GradientBoosting (Baseline),A_Real,sigmoid,antes,0.23515631571625212
+1,5,GradientBoosting (Baseline),A_Real,sigmoid,depois,0.24418459103651902
+1,5,GradientBoosting (Baseline),A_Real,isotonic,antes,0.23515631571625212
+1,5,GradientBoosting (Baseline),A_Real,isotonic,depois,0.26340000956171084
+1,5,CatBoost (SOTA),A_Real,sigmoid,antes,0.22585660513486455
+1,5,CatBoost (SOTA),A_Real,sigmoid,depois,0.1939056918883663
+1,5,CatBoost (SOTA),A_Real,isotonic,antes,0.22585660513486455
+1,5,CatBoost (SOTA),A_Real,isotonic,depois,0.21660219482155024
+1,5,TabPFN / HistGB (SOTA),A_Real,sigmoid,antes,0.22604680078182532
+1,5,TabPFN / HistGB (SOTA),A_Real,sigmoid,depois,0.2118891392479765
+1,5,TabPFN / HistGB (SOTA),A_Real,isotonic,antes,0.22604680078182532
+1,5,TabPFN / HistGB (SOTA),A_Real,isotonic,depois,0.21503182295566226
+1,5,GradientBoosting (Baseline),B_SDV1000,sigmoid,antes,0.2167969255572361
+1,5,GradientBoosting (Baseline),B_SDV1000,sigmoid,depois,0.21214448617635134
+1,5,GradientBoosting (Baseline),B_SDV1000,isotonic,antes,0.2167969255572361
+1,5,GradientBoosting (Baseline),B_SDV1000,isotonic,depois,0.22522011539455447
+1,5,CatBoost (SOTA),B_SDV1000,sigmoid,antes,0.2401429144530009
+1,5,CatBoost (SOTA),B_SDV1000,sigmoid,depois,0.2178486753408801
+1,5,CatBoost (SOTA),B_SDV1000,isotonic,antes,0.2401429144530009
+1,5,CatBoost (SOTA),B_SDV1000,isotonic,depois,0.23767971937703725
+1,5,TabPFN / HistGB (SOTA),B_SDV1000,sigmoid,antes,0.23690350307132463
+1,5,TabPFN / HistGB (SOTA),B_SDV1000,sigmoid,depois,0.21781561111937725
+1,5,TabPFN / HistGB (SOTA),B_SDV1000,isotonic,antes,0.23690350307132463
+1,5,TabPFN / HistGB (SOTA),B_SDV1000,isotonic,depois,0.2250979715022427

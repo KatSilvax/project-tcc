@@ -11,7 +11,7 @@ MODEL_FILES = [
     'tabpfn_sota_ifms.joblib',
 ]
 
-BUCKET_NAME = 'evasao-zero-dados-ifms-katy-849275'
+BUCKET_NAME = os.getenv('EVASAO_BUCKET', 'evasao-zero-dados-ifms-katy-849275')
 
 def criar_bucket_seguro(s3_client, bucket_name):
     try:

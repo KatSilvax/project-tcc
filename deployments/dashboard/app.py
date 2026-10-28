@@ -13,6 +13,12 @@ _PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '.
 if os.path.join(_PROJECT_ROOT, 'src') not in sys.path:
     sys.path.insert(0, os.path.join(_PROJECT_ROOT, 'src'))
 from model_wrapper import GBGridSearchWrapper
+from regras import (
+    FEATURE_COLUMNS,
+    MODEL_FILES,
+    colunas_faltantes,
+    politicas_recomendadas,
+)
 
 # Modelos antigos podem referenciar esta classe como __main__.GBGridSearchWrapper.
 sys.modules['__main__'].GBGridSearchWrapper = GBGridSearchWrapper
@@ -53,21 +59,7 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # --- Configuração AWS S3 ---
-BUCKET_NAME = 'evasao-zero-dados-ifms-katy-849275'
-MODEL_FILES = {
-    'GradientBoosting (Baseline)': 'gb_baseline_ifms.joblib',
-    'CatBoost (SOTA)': 'catboost_sota_ifms.joblib',
-    'TabPFN / HistGB (SOTA)': 'tabpfn_sota_ifms.joblib',
-}
-FEATURE_COLUMNS = [
-    'curso',
-    'periodo',
-    'idade',
-    'cidade',
-    'renda_total',
-    'trabalha_atualmente',
-    'recebe_auxilio_da_insti',
-]
+BUCKET_NAME = os.getenv('EVASAO_BUCKET', 'evasao-zero-dados-ifms-katy-849275')
 
 POLICIES = {
     'Pé-de-Meia': {
@@ -95,29 +87,6 @@ POLICIES = {
         'link': 'https://www.ifms.edu.br/',
     },
 }
-
-
-def politicas_recomendadas(perfil):
-    """Sugere encaminhamentos; a elegibilidade deve ser confirmada pela instituição."""
-    renda_baixa = perfil['renda_total'] in {
-        'ate 1 salario minimo',
-        'entre 1 e 2 salarios minimos',
-        'nao informado',
-    }
-    trabalha = perfil['trabalha_atualmente'] != 'nao'
-    solicitou_auxilio = perfil['recebe_auxilio_da_insti'] != 'nao'
-    recomendadas = []
-
-    if renda_baixa or solicitou_auxilio:
-        recomendadas.extend(['Auxílio permanência', 'Alimentação/refeição'])
-    if trabalha:
-        recomendadas.extend(['Auxílio permanência', 'Apoio pedagógico'])
-    if perfil['cidade'] != 'Jardim':
-        recomendadas.append('Auxílio transporte')
-    if perfil['idade'] in {'15 a 18 anos', 'menos de 15 anos'}:
-        recomendadas.append('Pé-de-Meia')
-    recomendadas.extend(['Apoio psicossocial', 'Apoio pedagógico'])
-    return list(dict.fromkeys(recomendadas))
 
 
 def analisar_base(df, modelos):
@@ -263,10 +232,10 @@ with st.expander("Usar outra turma (opcional)"):
 if arquivo_upload is not None:
     try:
         df_lote = pd.read_csv(arquivo_upload)
-        colunas_faltantes = [col for col in FEATURE_COLUMNS if col not in df_lote.columns]
+        faltantes = colunas_faltantes(df_lote.columns)
         
-        if colunas_faltantes:
-            st.error(f"A planilha enviada não possui as colunas obrigatórias. Faltam: {', '.join(colunas_faltantes)}")
+        if faltantes:
+            st.error(f"A planilha enviada não possui as colunas obrigatórias. Faltam: {', '.join(faltantes)}")
         else:
             df_base = df_lote
     except Exception as e:

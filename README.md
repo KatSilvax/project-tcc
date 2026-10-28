@@ -232,10 +232,14 @@ Saídas principais:
 Configure suas credenciais AWS no ambiente e execute:
 
 ```powershell
+$env:EVASAO_BUCKET = "seu-bucket"
 uv run python scripts/03_upload_s3.py
 ```
 
-O script publica a base sintética e os três modelos no bucket configurado.
+O script publica a base sintética e os três modelos no bucket configurado. A
+variável `EVASAO_BUCKET` define o nome do bucket usado pelo upload e pelo
+dashboard. Se ela não for definida, o projeto mantém como padrão
+`evasao-zero-dados-ifms-katy-849275`.
 Nunca coloque chaves AWS, tokens ou arquivos `.env` no repositório.
 
 ## Estrutura do projeto
