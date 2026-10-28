@@ -261,10 +261,19 @@ evasao-zero/
 ├── scripts/
 │   ├── 01_gerar_dados.py          # Síntese com SDV
 │   ├── 02_benchmark_modelos_tcc.py# Benchmark científico
-│   ├── 02_treinar_modelo.py       # Treino alternativo
-│   └── 03_upload_s3.py            # Publicação no S3
+│   ├── 03_upload_s3.py             # Publicação no S3
+│   ├── 04_robustez_basica.py       # IC, Brier, Wilcoxon e confusão
+│   ├── 05_robustez_limiar_calibracao_sintese.py
+│   │                                # Limiar, calibração e sensibilidade SDV
+│   ├── 06_robustez_explicabilidade_subgrupos.py
+│   │                                # SHAP, permutação e subgrupos
+│   └── 07_gerar_resumo_robustez.py # Resumo cauteloso em Markdown
 ├── src/
-│   └── model_wrapper.py            # Classes importáveis dos modelos
+│   ├── model_wrapper.py             # Classes importáveis dos modelos
+│   ├── regras.py                    # Regras puras do dashboard e testes
+│   └── robustez_utils.py            # Utilitários compartilhados de robustez
+├── tests/
+│   └── test_basico.py               # Testes unitários e de integração leve
 ├── pyproject.toml
 ├── requirements.txt
 └── uv.lock
@@ -299,6 +308,36 @@ As figuras produzidas pelo benchmark estão em [`figures/tcc/`](figures/tcc/):
 
 O arquivo [`resultados_benchmark_tcc.csv`](resultados_benchmark_tcc.csv) contém
 as métricas consolidadas dos experimentos.
+
+## Robustez estatística e rastreabilidade
+
+Os experimentos adicionais foram separados do benchmark original para medir a
+incerteza sem sobrescrever resultados anteriores:
+
+| Script | Escopo | Principais saídas |
+|---|---|---|
+| `scripts/04_robustez_basica.py` | RepeatedStratifiedKFold, IC95% bootstrap, Brier Skill Score, Wilcoxon com Holm e matrizes de confusão | `resultados_robustez_base.csv`, `resultados_robustez_basica.csv`, `resultados_robustez_testes.csv`, `resultados_robustez_confusao.csv` |
+| `scripts/05_robustez_limiar_calibracao_sintese.py` | Limiar escolhido dentro do treino, calibração sigmoid/isotonic e 0/250/500/1000/2000 sintéticos por fold | `resultados_robustez_limiar.csv`, `resultados_robustez_calibracao.csv`, `resultados_robustez_sintese.csv` |
+| `scripts/06_robustez_explicabilidade_subgrupos.py` | Importância por permutação, SHAP, estabilidade de ranking e desempenho por subgrupos | `resultados_robustez_importancia.csv`, `resultados_robustez_subgrupos.csv`, `resultados_robustez_rastreabilidade.csv` |
+| `scripts/07_gerar_resumo_robustez.py` | Consolidação cautelosa dos CSVs de robustez | `resultados_robustez_resumo.md` |
+
+As figuras desses experimentos usam o prefixo `rob_` em `figures/tcc/`. A
+validação reduzida foi executada com `--repeticoes 1`; a análise completa
+requer mais repetições e não deve ser interpretada como validação externa.
+Quando `tabpfn` não está instalado ou a memória disponível é insuficiente, o
+terceiro modelo é registrado como fallback `HistGradientBoosting`.
+
+### Testes automatizados
+
+Execute:
+
+```powershell
+uv run pytest -q
+```
+
+A suíte cobre a criação do alvo, políticas recomendadas, schema das sete
+colunas obrigatórias do upload e carregamento dos modelos quando os artefatos
+estão disponíveis. Na última validação, foram aprovados 14 testes.
 
 ## Contribuição
 
